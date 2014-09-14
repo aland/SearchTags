@@ -1,0 +1,41 @@
+<head>
+	<link href="../js/select2-3.5.1/select2.css" rel="stylesheet"/>
+	<script>
+        DEBUG = true; //before include console.js
+	</script>
+	<script src="../js/console/console.js"></script>
+	<script src="../js/jquery-1.11.1.js"></script>
+	<script src="../js/select2-3.5.1/select2.js"></script>
+	<script src="updatelist.js"></script>
+	<script> /* Required data */
+		var tagArr=["red", "green", "blue"];
+		var dataArr={"apple":["red","green"],
+		             "sky":["red","blue"],
+					 "car":["red","green","blue"],
+					 "grass":["green","blue"]
+					};
+	</script>
+	<script>
+		$(document).ready(function() {
+			if(!validateCheck()) {
+				//hide shit and show error
+				return false;
+			}
+			$("#e1").select2({
+				tags:tagArr,
+				width:500
+			}) 
+			.on("select2-open", function() { console.log("open"); })
+			.on("change", function(e) { changeList("results", e); });
+			changeList("results"); //load default results
+		});
+
+	</script>
+</head>
+<body>
+	<input type="hidden" id="e1">
+	</input>
+	<p>Here you will find a list of possible values, these will be reduced by adding search tags above.</p>
+	<ul id="results">
+	</ul>
+</body>
