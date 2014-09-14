@@ -1,3 +1,6 @@
+# Ignore linked in js directory
+/js/
+/js/*
 #################
 ## Eclipse
 #################
