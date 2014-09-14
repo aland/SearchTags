@@ -46,21 +46,23 @@ function updateList(listId, data, keys) {
 	console.log(keys);
 	$("#"+listId).html(""); //clear old list
 	var dataList = [];
+	var found = [];
 	$.each(data, function(item, tags) { //go through our list
 		console.log("looking for "+item);
 		if(typeof keys == 'undefined' || Object.keys(keys).length == 0) {
 			$("#"+listId).append($('<li/>').text(item));
 		}
 		else if(dataList.indexOf(item) == -1) { //don't add an item twice
+			found = [];
 			$.each(tags, function(j, tag) {
 				if(keys.indexOf(tag) != -1) { //compare each of its tags to the current selected
 					console.log("found! "+item+" has "+tag);
-					dataList.push(item);
-					$("#"+listId).append($('<li/>').text(item));
-					return false; //break into outer loop
+					found[item] = found[item] ? 1 + found[item] : 1; //increment or initalise
 				}
-				//console.log(i+" has "+item);
 			});
+			if(Object.keys(keys).length == found[item]) {
+				$("#"+listId).append($('<li/>').text(item));
+			}
 		}
 	});
 }
