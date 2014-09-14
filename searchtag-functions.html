@@ -20,7 +20,9 @@
 	<script>
 		$(document).ready(function() {
 			if(!validateCheck()) {
-				//hide shit and show error
+				$("#error").show();
+				$("#search").hide();
+				$("#results").hide();
 				return false;
 			}
 			$("#e1").select2({
@@ -28,16 +30,17 @@
 				width:500
 			}) 
 			.on("select2-open", function() { console.log("open"); })
-			.on("change", function(e) { changeList("results", e); });
-			changeList("results"); //load default results
+			.on("change", function(e) { changeList("resultList", e); });
+			changeList("resultList"); //load default results
 		});
 
 	</script>
 </head>
 <body>
 	<h1>Type or select a tag from the list</h1>
-	<input type="hidden" id="e1"></input>
-	<p>Here you will find the results, which will be reduced by adding search tags above.</p>
-	<ul id="results">
-	</ul>
+	<p id="error">Something went wrong.</p>
+	<div id="search"><input type="hidden" id="e1"></input></div>
+	<div id="results"><p>Here you will find the results, which will be reduced by adding search tags above.</p>
+	<ul id="resultList"></ul>
+	</div>
 </body>
