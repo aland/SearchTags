@@ -1,11 +1,13 @@
 <head>
-	<link href="../js/select2-3.5.1/select2.css" rel="stylesheet"/>
+	<link href="js/select2-3.5.1/select2.css" rel="stylesheet"/>
 	<script>
         DEBUG = true; //before include console.js
 	</script>
-	<script src="../js/console/console.js"></script>
-	<script src="../js/jquery-1.11.1.js"></script>
-	<script src="../js/select2-3.5.1/select2.js"></script>
+	<script src="js/console/console.js"></script>
+	<script src="js/jquery-1.11.1.js"></script>
+	<script src="js/select2-3.5.1/select2.js"></script>
+	
+	<link href="searchtag.css" rel="stylesheet"/>
 	<script src="updatelist.js"></script>
 	<script> /* Required data */
 		var tagArr=["red", "green", "blue"];
@@ -33,9 +35,9 @@
 	</script>
 </head>
 <body>
-	<input type="hidden" id="e1">
-	</input>
-	<p>Here you will find a list of possible values, these will be reduced by adding search tags above.</p>
+	<h1>Type or select a tag from the list</h1>
+	<input type="hidden" id="e1"></input>
+	<p>Here you will find the results, which will be reduced by adding search tags above.</p>
 	<ul id="results">
 	</ul>
 </body>
