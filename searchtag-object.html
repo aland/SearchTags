@@ -1,0 +1,52 @@
+<head>
+	<link href="js/select2-3.5.1/select2.css" rel="stylesheet"/>
+	<script>
+        DEBUG = true; //before include console.js
+	</script>
+	<script src="js/console/console.js"></script>
+	<script src="js/jquery-1.11.1.js"></script>
+	<script src="js/select2-3.5.1/select2.js"></script>
+	
+	<link href="searchtag.css" rel="stylesheet"/>
+	<script src="changeList.js"></script>
+	<script> /* Required data */
+		var tagArr=["red", "green", "blue"];
+		var dataArr={"apple":["red","green"],
+		             "sky":["red","blue"],
+					 "car":["red","green","blue"],
+					 "grass":["green","blue"]
+					};
+	</script>
+	<script>
+		$(document).ready(function() {
+			try{
+				var List = new ChangeList("results", tagArr, dataArr);
+				$("#e1").select2({
+					tags:tagArr,
+					width:500
+				}) 
+				.on("select2-open", function() { console.log("open"); })
+				.on("change", function(e) { List.changeList(e);/*.updateList();*/ });
+
+				List.changeList(); //load default results
+			}
+			catch(e) {
+				console.log("Caught exception, probably not defined data and or tag arrays");
+				console.error(e);
+				$("#error").show();
+				$("#search").hide();
+				$("#results").hide();
+				return false;
+			}
+		});
+
+	</script>
+</head>
+<body>
+	<h1>Type or select a tag from the list</h1>
+	<p id="error">Something went wrong.</p>
+	<div id="search"><input type="hidden" id="e1"></input></div>
+	<div id="results"><p>Here you will find the results, which will be reduced by adding search tags above.</p>
+	<ul id="resultList"></ul>
+	</div>
+</body>
