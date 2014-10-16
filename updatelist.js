@@ -48,11 +48,11 @@ function updateList(listId, data, keys) {
 	var dataList = [];
 	var found = [];
 	$.each(data, function(item, tags) { //go through our list
-		console.log("looking for "+item);
 		if(typeof keys == 'undefined' || Object.keys(keys).length == 0) {
 			$("#"+listId).append($('<li/>').text(item));
 		}
 		else if(dataList.indexOf(item) == -1) { //don't add an item twice
+			console.log("looking for "+item+" from "+Object.keys(keys).length+" entered tags");
 			found = [];
 			$.each(tags, function(j, tag) {
 				if(keys.indexOf(tag) != -1) { //compare each of its tags to the current selected
