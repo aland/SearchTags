@@ -1,4 +1,4 @@
 /**/
 body { font: 18px/30px georgia,serif; }
-ul { list-style: none outside none; padding: 0px; }
+ul { /*list-style: none outside none; padding: 0px;*/ }
 #error { display: none; color: red;}

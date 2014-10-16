@@ -13,13 +13,13 @@
 	<script>
 		$(document).ready(function() {
 			try{
-				var List = new ChangeList("results", tagArr, dataArr);
+				var List = new ChangeList("resultList", tagArr, dataArr);
 				$("#e1").select2({
 					tags:tagArr,
 					width:500
 				}) 
 				.on("select2-open", function() { console.log("open"); })
-				.on("change", function(e) { List.changeList(e);/*.updateList();*/ });
+				.on("change", function(e) { List.changeList(e); });
 
 				List.changeList(); //load default results
 			}
@@ -32,9 +32,9 @@
 				return false;
 			}
 		});
-
 	</script>
 </head>
+
 <body>
 	<h1>Type or select a tag from the list</h1>
 	<p id="error">Something went wrong.</p>
